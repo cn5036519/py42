@@ -6,4 +6,5 @@ def index(request):
     return HttpResponse("ok")
 
 def center(request):
-    return HttpResponse("hello")
+    # 将上下文交给模板进行处理,处理后将视图响应给客户端.
+    return render(request, "book/center.html", {'title': "center页面"})

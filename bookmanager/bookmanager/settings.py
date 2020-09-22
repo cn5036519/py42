@@ -25,7 +25,10 @@ SECRET_KEY = '^pqw^j^@ny-tv&g+!@a4#3$^*+a#s#nyl$9ezn47s75^)i5!xm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ["192.168.112.154", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ['*']
+# 什么都不写,默认是127.0.0.1
+# ALLOWED_HOSTS = []
 
 
 # Application definition

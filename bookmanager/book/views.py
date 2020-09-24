@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
-from book.models import BookInfo
+from book.models import BookInfo, PeopleInfo
 
 
 def index(request):
@@ -51,3 +51,60 @@ if __name__ == '__main__':
     BookInfo.objects.exclude(id=3)
     BookInfo.objects.filter(~Q(id=3))
     BookInfo.objects.filter(Q(id__gt=3)|Q(id__lt=3))
+
+    # 查询书籍为1的所有人物信息
+    PeopleInfo.objects.filter(book_id=1)
+    book = BookInfo.objects.get(id=1)
+    book.peopleinfo_set.all()
+    # 查询人物为1的书籍信息
+    BookInfo.objects.filter(peopleinfo__id=1)
+    people = PeopleInfo.objects.get(id=1)
+    people.book.name
+
+    # 查询图书，要求图书人物为"郭靖"
+    BookInfo.objects.filter(peopleinfo__name="郭靖")
+    # 查询图书，要求图书中人物的描述包含"八"
+    BookInfo.objects.filter(peopleinfo__description__contains="八")
+
+    # 查询书名为“天龙八部”的所有人物
+    PeopleInfo.objects.filter(book__name="天龙八部")
+    # 查询图书阅读量大于30的所有人物
+    PeopleInfo.objects.filter(book__readcount__gt=30)
+
+
+    PeopleInfo.objects.count()
+    # 返回值为一个people实例对象
+    PeopleInfo.objects.create(
+        name="薛婷婷",
+        gender=2,
+        book_id=1
+    )
+    PeopleInfo.objects.create(
+        name="王同培",
+        gender=1,
+        # book必须是个实例对象
+        book=BookInfo.objects.get(id=1)
+    )
+
+    people = PeopleInfo(
+        name="单晚霞",
+        gender=2,
+        book_id=1
+    )
+    people.save()
+
+    people = PeopleInfo.objects.get(name="单晚霞")
+    people.book_id = 2
+    people.save()
+
+    # 返回影响的数据行数
+    PeopleInfo.objects.filter(name="单晚霞").update(book_id=1)
+
+    # 返回值:(<PeopleInfo: 张太帅>, True),第二个元素表示是否创建了一个新对象.
+    PeopleInfo.objects.update_or_create(book_id=3, name="张太帅")
+    # 如果对象不存在,使用默认值创建一个.如果对象存在,则再创建一个新的对象.
+    PeopleInfo.objects.update_or_create(book_id=1, name="张太帅")
+
+    # 返回值:(1, {'book.PeopleInfo': 1}) ->book指应用名
+    PeopleInfo.objects.get(name="单晚霞").delete()
+    PeopleInfo.objects.filter(name="张太帅").delete()

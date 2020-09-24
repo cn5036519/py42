@@ -14,6 +14,7 @@ class BookInfo(models.Model):
     class Meta:
         db_table = "bookinfo"
         verbose_name = "书籍"
+        verbose_name_plural = "书籍们"
 
 
 class PeopleInfo(models.Model):
@@ -36,5 +37,6 @@ class PeopleInfo(models.Model):
     class Meta:
         db_table = "peopleinfo"
         verbose_name = "人物"
+        verbose_name_plural = "人物们"
 
 

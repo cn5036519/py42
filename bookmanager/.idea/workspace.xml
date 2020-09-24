@@ -66,10 +66,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/book/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="107" column="48" selection-start-line="107" selection-start-column="48" selection-end-line="107" selection-end-column="48" />
+            <state relative-caret-position="90">
+              <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
               <folding>
-                <element signature="e#0#33#0" expanded="true" />
+                <element signature="e#0#43#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -222,12 +222,12 @@
       <updated>1600748795710</updated>
       <workItem from="1600748797732" duration="10056000" />
       <workItem from="1600777435395" duration="2167000" />
-      <workItem from="1600919563015" duration="9778000" />
+      <workItem from="1600919563015" duration="12155000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22001000" />
+    <option name="totallyTimeSpent" value="24378000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1297" height="599" extended-state="6" />
@@ -247,7 +247,7 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32920793" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32476637" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3364486" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.5233645" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -391,12 +391,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/django/lib/python3.6/site-packages/django/core/paginator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="169" column="8" selection-start-line="169" selection-start-column="8" selection-end-line="169" selection-end-column="8" />
+          <folding>
+            <element signature="e#880#1504#0" />
+            <element signature="e#1546#1872#0" />
+            <element signature="e#1910#2248#0" />
+            <element signature="e#2300#2508#0" />
+            <element signature="e#2560#2811#0" />
+            <element signature="e#3132#3289#0" />
+            <element signature="e#3344#4032#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/book/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="107" column="48" selection-start-line="107" selection-start-column="48" selection-end-line="107" selection-end-column="48" />
+        <state relative-caret-position="90">
+          <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
           <folding>
-            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>

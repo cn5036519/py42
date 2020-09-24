@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.db.models import F, Q
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -108,3 +109,21 @@ if __name__ == '__main__':
     # 返回值:(1, {'book.PeopleInfo': 1}) ->book指应用名
     PeopleInfo.objects.get(name="单晚霞").delete()
     PeopleInfo.objects.filter(name="张太帅").delete()
+
+#     分页
+    peoples = PeopleInfo.objects.all()
+    paginator = Paginator(peoples, 5)   # 每页5条数据
+    # 返回有效页:<Page 1 of 4>
+    paginator.get_page(1)
+    # 返回总页数
+    paginator.num_pages
+    # 返回有效页:<Page 1 of 4>, 与get_page(num)的区别是:num如果不是有效数字,就会报错.
+    page = paginator.page(1)
+    # 返回值:QuerySet
+    page.object_list
+    page.has_next()
+    page.has_previous()
+    page.has_other_pages()
+    page.next_page_number() # 下一页是第几页
+    page.previous_page_number() # 上一页是第几页
+

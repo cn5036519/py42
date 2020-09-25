@@ -53,7 +53,8 @@ def json_data(request):
     # return HttpResponse("json")
     # 响应一个json数据
     # return JsonResponse(json.loads(request.body.decode(encoding="utf-8")))
-    return JsonResponse([100, 200, 300, datetime.date(2014,5,25)], safe=False)
+    # 元组数据不可以序列化,但不会报错,它转为了列表.即[100, 200, 300, "2014-05-25", [1, 2]]
+    return JsonResponse([100, 200, 300, datetime.date(2014,5,25), (1,2)], safe=False)
     # return JsonResponse("hahaha", safe=False)
     # 中文无法正常显示
     # return JsonResponse("哈哈哈", safe=False)
@@ -68,3 +69,25 @@ def goods2(request, cat_id, goods_id):
     # 自定义响应头
     response["School"] = "itcast"
     return response
+
+def set_cookie(request):
+    username = request.GET.get("username")
+    response = HttpResponse("set_cookie")
+    # cookie的本质:设置一个响应头,key为Set-Cookie,值为passwd=123456
+    response.set_cookie("passwd", "123456")
+    # 设置cookie的有效时间(单位:秒)
+    response.set_cookie("user", username, max_age=3600)
+    return response
+
+def get_cookie(request):
+    print(request.COOKIES, type(request.COOKIES))  # dict
+    return HttpResponse("get_cookie")
+
+def delete_cookie(request):
+    response = HttpResponse("delete_cookie")
+    # 删除cookie的本质:设置cookie的有效期为0
+    response.delete_cookie("user")
+    response.delete_cookie("passwd")
+    return response
+
+from django.contrib.sessions.backends.db import SessionStore

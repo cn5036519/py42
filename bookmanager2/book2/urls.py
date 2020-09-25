@@ -1,6 +1,7 @@
 from django.urls import path
 
-from book2.views import index, goods, post_home, get_home, register, json_data, goods2
+from book2.views import index, goods, post_home, get_home, register, json_data, goods2, set_cookie, get_cookie, \
+    delete_cookie
 
 urlpatterns = [
     path("index/", index),
@@ -11,4 +12,7 @@ urlpatterns = [
     path("post_home/", post_home),  # 查询字符串
     path("register/", register),
     path("json/", json_data),
+    path("set_cookie/", set_cookie),
+    path('get_cookie/', get_cookie),
+    path('delete_cookie/', delete_cookie),
 ]

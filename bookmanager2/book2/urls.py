@@ -1,7 +1,7 @@
 from django.urls import path
 
 from book2.views import index, goods, post_home, get_home, register, json_data, goods2, set_cookie, get_cookie, \
-    delete_cookie, set_session, get_session, clear_session, delete_session, RegisterView
+    delete_cookie, set_session, get_session, clear_session, delete_session, RegisterView, set_redirect
 
 urlpatterns = [
     path("index/", index),
@@ -20,4 +20,5 @@ urlpatterns = [
     path('clear_session/', clear_session),
     path('delete_session/', delete_session),
     path('register2/', RegisterView.as_view()),
+    path('set_redirect/', set_redirect),
 ]

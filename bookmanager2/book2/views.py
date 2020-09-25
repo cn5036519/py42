@@ -2,7 +2,7 @@ import datetime
 import json
 
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.views import View
@@ -127,3 +127,13 @@ class RegisterView(View):
     def post(self, request):
         print(request.POST)  # QuerySet
         return JsonResponse(request.POST)
+
+# 设置重定向
+def set_redirect(request):
+    if request.method == "GET":
+        rec = redirect("/register2/")
+        rec.set_cookie("school", "heima")
+        return rec
+    else:
+        print(request.COOKIES)
+        return HttpResponse(request.COOKIES.get("school"))

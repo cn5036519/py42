@@ -1,6 +1,7 @@
+import datetime
 import json
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -49,9 +50,21 @@ def json_data(request):
     print(json.loads(request.body.decode(encoding="utf-8")))
     # "CONTENT_TYPE" 必须全部大写.
     print(request.META.get("CONTENT_TYPE"))  # application/json
-    return HttpResponse("json")
+    # return HttpResponse("json")
+    # 响应一个json数据
+    # return JsonResponse(json.loads(request.body.decode(encoding="utf-8")))
+    return JsonResponse([100, 200, 300, datetime.date(2014,5,25)], safe=False)
+    # return JsonResponse("hahaha", safe=False)
+    # 中文无法正常显示
+    # return JsonResponse("哈哈哈", safe=False)
 
 
 def goods2(request, cat_id, goods_id):
     print(goods_id, type(goods_id))
-    return HttpResponse("Goods2")
+    # HttpResponse的第一个参数是content,即响应体,bytes类型.
+    # HttpResponse的第二个参数是content_type,如果不传值,默认是'text/html'; charset='utf-8'
+    # HttpResponse的第三个参数是status,如果不传值,默认是200
+    response = HttpResponse("Goods2")
+    # 自定义响应头
+    response["School"] = "itcast"
+    return response

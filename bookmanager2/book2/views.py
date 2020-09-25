@@ -91,3 +91,25 @@ def delete_cookie(request):
     return response
 
 from django.contrib.sessions.backends.db import SessionStore
+
+def set_session(request):
+    request.session["user"] = "lucy"
+    request.session["age"] = 35
+    return HttpResponse("set_session")
+
+def get_session(request):
+    print(request.session.get("user"))
+    print(request.session.get("age"))
+    return HttpResponse("get_session")
+
+def clear_session(request):
+    print(request.session.get("user"))
+    request.session.clear()
+    print(request.session.get("user"))
+    return HttpResponse("clear_session")
+
+def delete_session(request):
+    print(request.session.get("user"))
+    request.session.flush()
+    print(request.session.get("user"))
+    return HttpResponse("delete_session")

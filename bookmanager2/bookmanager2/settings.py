@@ -74,6 +74,8 @@ WSGI_APPLICATION = 'bookmanager2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# 将session存储在数据库中
+# SESSION_ENGINE='django.contrib.sessions.backends.db'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -85,6 +87,21 @@ DATABASES = {
     }
 }
 
+# 将session存储在内存中
+SESSION_ENGINE='django.contrib.sessions.backends.cache'
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+SESSION_CACHE_ALIAS = 'default'
+
+# 优先从内存中存取,再从数据库中存取.
+# SESSION_ENGINE='django.contrib.sessions.backends.cached_db'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

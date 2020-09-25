@@ -95,6 +95,8 @@ from django.contrib.sessions.backends.db import SessionStore
 def set_session(request):
     request.session["user"] = "lucy"
     request.session["age"] = 35
+    # 设置session的有效期
+    request.session.set_expiry(3600)
     return HttpResponse("set_session")
 
 def get_session(request):

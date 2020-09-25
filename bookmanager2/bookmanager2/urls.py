@@ -15,6 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.urls.converters import register_converter
+
+from custom_converters import PhoneConverter
+
+# 注册路由转换器
+register_converter(PhoneConverter, "phone")
 
 urlpatterns = [
     path('admin/', admin.site.urls),

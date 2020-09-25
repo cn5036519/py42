@@ -5,6 +5,9 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
+from django.views import View
+
+
 def index(request):
     return HttpResponse("index")
 
@@ -115,3 +118,12 @@ def delete_session(request):
     request.session.flush()
     print(request.session.get("user"))
     return HttpResponse("delete_session")
+
+# 类视图
+class RegisterView(View):
+    def get(self, request):
+        return render(request, "register.html")
+
+    def post(self, request):
+        print(request.POST)  # QuerySet
+        return JsonResponse(request.POST)
